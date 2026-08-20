@@ -14,6 +14,9 @@ add_subdirectory(vendor/SDL EXCLUDE_FROM_ALL)
 
 add_executable(engine
     src/main.cpp
+    src/audio.cpp
 )
+
+target_include_directories(engine PRIVATE include)
 
 target_link_libraries(engine PRIVATE SDL3::SDL3 Vulkan::Vulkan)
