@@ -2,13 +2,7 @@
 #include "SDL3/SDL_audio.h"
 #include "SDL3/SDL_stdinc.h"
 
-typedef struct {
-  float phase;
-  float step_size;
-  float volume;
-} oscillator;
-
-typedef struct {
+typedef struct WaveData {
   float freq;
   float phase = 0;
   float volume;
