@@ -1,13 +1,14 @@
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_main.h>
+
 #include <iostream>
 
-int main(int argc, char *argv[]) {
+int main(int argc, char* argv[]) {
   if (!SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO)) {
     std::cout << "Failed to init SDL. \n";
   }
 
-  SDL_Window *window = SDL_CreateWindow("engine", 640, 480, 0);
+  SDL_Window* window = SDL_CreateWindow("engine", 640, 480, 0);
 
   if (!window) {
     std::cout << "Failed to init window.";
