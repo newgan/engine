@@ -14,7 +14,7 @@ add_subdirectory(vendor/SDL EXCLUDE_FROM_ALL)
 
 add_executable(engine
     src/main.cpp
-    src/audio.cpp
+    src/audio/engine.cpp
 )
 
 target_include_directories(engine PRIVATE include)
