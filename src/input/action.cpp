@@ -17,7 +17,6 @@ void ACTION_HandleInput(){
         Interactions()
         etc..
     */
-
     // Play audio when W key is pressed
     AUDIO_SetPlaying(key_states[SDL_SCANCODE_W]);
 }

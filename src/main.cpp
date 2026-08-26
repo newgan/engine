@@ -12,7 +12,7 @@ int main(int argc, char *argv[]) {
     std::cout << "Failed to init SDL. \n";
   }
 
-  WaveData wd = { .phase = 0.0f, .freq = 440.25f, .volume = 0.8f, .rate = 48000.0f}; // define audio data
+  WaveData wd = { .freq = 440.25f, .phase = 0.0f, .volume = 0.8f, .rate = 48000.0f}; // define audio data
   AUDIO_Init(&wd);
   SDL_Window *window = SDL_CreateWindow("engine", 640, 480, 0);
 

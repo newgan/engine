@@ -3,7 +3,7 @@
 #include "SDL3/SDL_stdinc.h"
 #include "audio/engine.h"
 #include "audio/dsl.h"
-
+#include <iostream>
 const int BUFFER_SIZE = 4096;
 const int SAMPLE_SIZE = 44100;
 
@@ -27,7 +27,7 @@ void AUDIO_Init(WaveData* data){
   SDL_ResumeAudioStreamDevice(stream); // unpause stream
 }
 
-void AUDIO_SetPlaying(const bool *keyPressed){
+void AUDIO_SetPlaying(bool keyPressed){
   if (keyPressed){
     wd->isPlaying = true;
   } else {
@@ -43,10 +43,7 @@ void oscillator_callback(void *userdata, SDL_AudioStream *stream, int additional
         const int total = SDL_min(additional_amount, SDL_arraysize(samples));
         // generate a 440Hz sine wave
         for (int i = 0; i < total; i++) {
-            float wave = computeSineWave(data->phase);
-            data->isPlaying ? samples[i] = wave * data->volume : samples[i] = wave * 0.0f;
-            data->phase += data->freq / data->rate;   
-            if (data->phase >= 1.0f) { data->phase -= 1.0f; }
+            samples[i] = computeSineWave(data); // actual sound being computed / synthesized. basic sine for now
       }
 
         // feed the new data to the stream.
