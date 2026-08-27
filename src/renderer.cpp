@@ -111,12 +111,24 @@ void Renderer::createInstance() {
   char const* const* instanceExtensions{
       SDL_Vulkan_GetInstanceExtensions(&instanceExtensionsCount)};
 
+  const char* validationLayers[] = {
+      "VK_LAYER_KHRONOS_validation",
+  };
+
   VkInstanceCreateInfo instanceCI{
       .sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO,
       .pApplicationInfo = &appInfo,
       .enabledExtensionCount = instanceExtensionsCount,
       .ppEnabledExtensionNames = instanceExtensions,
   };
+
+#ifdef DEBUG
+  // TODO: we should probably enable/disable specific layers eventually, but im
+  // lazy
+  createInfo.enabledLayerCount =
+      static_cast<uint32_t>(std::size(validationLayers));
+  createInfo.ppEnabledLayerNames = validationLayers;
+#endif
 
   vkCreateInstance(&instanceCI, nullptr, &instance);
 }
@@ -131,9 +143,6 @@ void Renderer::getPhysicalDevice() {
   vkEnumeratePhysicalDevices(instance, &deviceCount, devices.data());
 
   physicalDevice = devices[0];
-
-  VkPhysicalDeviceProperties properties{};
-  vkGetPhysicalDeviceProperties(physicalDevice, &properties);
 }
 
 void Renderer::createLogicalDevice() {

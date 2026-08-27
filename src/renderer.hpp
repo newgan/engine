@@ -1,7 +1,8 @@
+#include <vulkan/vulkan.h>
+
 #include <vector>
 
 #include "SDL3/SDL_video.h"
-#include "vulkan/vulkan_core.h"
 
 class Renderer {
  public:
