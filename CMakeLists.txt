@@ -10,10 +10,13 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIGURATION>")
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIGURATION>")
 
 find_package(Vulkan REQUIRED)
-add_subdirectory(vendor/SDL EXCLUDE_FROM_ALL)
+add_subdirectory(vendor/SDL)
+add_subdirectory(vendor/glm)
+add_subdirectory(vendor/VulkanMemoryAllocator)
 
 add_executable(engine
     src/main.cpp
+    src/renderer.cpp
 )
 
-target_link_libraries(engine PRIVATE SDL3::SDL3 Vulkan::Vulkan)
+target_link_libraries(engine PRIVATE SDL3::SDL3 Vulkan::Vulkan GPUOpen::VulkanMemoryAllocator glm::glm)
