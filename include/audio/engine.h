@@ -10,7 +10,7 @@ typedef struct WaveData {
   bool isPlaying = 0;
 } WaveData;
 
-void AUDIO_Init(WaveData* data);
+void AUDIO_Init(WaveData* data = nullptr);
 inline void AUDIO_TogglePlayback(WaveData *userdata, bool isPlaying){ userdata->isPlaying = isPlaying; };
 void AUDIO_SetPlaying(bool keyPressed);
 void oscillator_callback(void *userdata, SDL_AudioStream *stream, int additional_amount, int total_amount);
