@@ -19,4 +19,8 @@ add_executable(engine
     src/renderer.cpp
 )
 
+target_compile_definitions(engine PRIVATE
+  $<$<CONFIG:Debug>:DEBUG>
+)
+
 target_link_libraries(engine PRIVATE SDL3::SDL3 Vulkan::Vulkan GPUOpen::VulkanMemoryAllocator glm::glm)

@@ -17,7 +17,6 @@ int main(int argc, char* argv[]) {
   Renderer renderer;
   renderer.init(window.getHandle(), windowWidth, windowHeight);
   renderer.run();
-  renderer.cleanup();
 
   return 0;
 }
