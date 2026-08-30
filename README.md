@@ -13,6 +13,11 @@ cmake -B build
 cmake --build build
 ```
 
+## Compiling Shaders
+```sh
+slangc src/shaders/shader.slang -target spirv -profile spirv_1_3 -emit-spirv-directly -fvk-use-entrypoint-name -entry vertMain -entry fragMain -o slang.spv
+```
+
 ## Usage
 
 ```sh
