@@ -16,7 +16,7 @@ add_subdirectory(vendor/VulkanMemoryAllocator)
 
 add_executable(engine
     src/main.cpp
-    src/renderer.cpp
+    src/renderer/renderer.cpp
 )
 
 target_compile_definitions(engine PRIVATE

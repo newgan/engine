@@ -5,7 +5,7 @@
 #include <vk_mem_alloc.h>
 #include <vulkan/vulkan.h>
 
-#include "renderer.hpp"
+#include "renderer/renderer.hpp"
 #include "window.hpp"
 
 constexpr int windowWidth = 1280;
