@@ -1,6 +1,7 @@
 #define VULKAN_HPP_DEFAULT_DISPATCH_LOADER_DYNAMIC_STORAGE
 #include "renderer.hpp"
 
+#include <chrono>
 #include <fstream>
 #include <vector>
 
@@ -97,7 +98,11 @@ void Renderer::drawFrame() {
   presentInfoKHR.swapchainCount = 1, presentInfoKHR.pSwapchains = &*swapchain,
   presentInfoKHR.pImageIndices = &imageIndex;
 
-  result = graphicsQueue.presentKHR(presentInfoKHR);
+  try {
+    result = graphicsQueue.presentKHR(presentInfoKHR);
+  } catch (const vk::SurfaceLostKHRError& e) {
+    recreateSwapchain();
+  }
 
   frameIndex = (frameIndex + 1) % MAX_FRAMES_IN_FLIGHT;
 }
